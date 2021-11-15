@@ -1,0 +1,9 @@
+type Pool @entity {
+  id: ID!
+  totalSupply: BigInt!
+}
+
+type User @entity {
+  id: ID!
+  balance: BigInt!
+}

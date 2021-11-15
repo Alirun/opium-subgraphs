@@ -1,0 +1,27 @@
+specVersion: 0.0.2
+description: GUni Pool
+repository: https://github.com/graphprotocol/example-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: GUniPool
+    network: mainnet
+    source:
+      address: '0x2A2Cd905141F1cDf3620dB6A1eD0Abc4F7E8635C'
+      abi: GUniPool
+      startBlock: 13426326
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Pool
+        - User
+      abis:
+        - name: GUniPool
+          file: ./abis/GUniPool.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts
